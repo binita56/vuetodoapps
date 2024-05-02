@@ -5,12 +5,7 @@
         <h1>To Do List</h1>
       </div>
       <div class="form">
-        <input
-          type="text"
-          placeholder="New Task"
-          v-model="newTask"
-          @keyup.enter="addTask"
-        />
+        <input type="text" placeholder="New Task" v-model="newTask" @keyup.enter="addTask" />
         <button @click="addTask">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +26,7 @@
 
       <div class="taskItems">
         <ul>
-          <TaskItem
-            v-bind:task="task"
-            v-for="(task, index) in tasks"
-            :key="task.id"
+          <TaskItem v-bind:task="task" v-for="(task, index) in tasks" :key="task.id" 
             @remove="removeTask(index)"
             @complete="completeTask(task)"
           />

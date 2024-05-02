@@ -1,6 +1,7 @@
+<!-- App.vue -->
 <template>
   <div id="app">
-    <TaskTodo v-bind:tasks="tasks" />
+    <TaskTodo v-bind:tasks="tasks" @add-task="addTask" @remove-task="removeTask" @complete-task="completeTask" @clear-completed="clearCompleted" @clear-all="clearAll" />
   </div>
 </template>
 
@@ -42,6 +43,23 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    addTask(task) {
+      this.tasks.push(task);
+    },
+    removeTask(index) {
+      this.tasks.splice(index, 1);
+    },
+    completeTask(task) {
+      task.completed = true;
+    },
+    clearCompleted() {
+      this.tasks = this.tasks.filter(task => !task.completed);
+    },
+    clearAll() {
+      this.tasks = [];
+    },
   },
 };
 </script>
